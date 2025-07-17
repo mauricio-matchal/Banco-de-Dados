@@ -1,0 +1,27 @@
+π Objetos_descartados.descricao, Empresas.razao_social (
+  σ Agendamentos.status = 'coletado' (
+    Objetos_descartados ⋈ Objetos_descartados.id = Agendamentos.id_objeto (
+      Agendamentos ⋈ Agendamentos.id_empresa = Empresas.id Empresas
+    )
+  )
+)
+
+π Usuarios.nome, Objetos_descartados.descricao, Feedbacks.comentario (
+  (σ Feedbacks.nota < 3 Feedbacks)
+  ⋈ Feedbacks.id_usuario = Usuarios.id Usuarios
+  ⋈ Feedbacks.id_objeto = Objetos_descartados.id Objetos_descartados
+) 
+
+π Empresas.razao_social, Certificados.arquivo_certificado (
+  Certificados ⋈ Certificados.id_agendamento = Agendamentos.id (
+    Agendamentos ⋈ Agendamentos.id_empresa = Empresas.id Empresas
+  )
+)
+
+π Objetos_descartados.descricao, Agendamentos.data_agendamento (
+  σ Agendamentos.status = 'pendente' ∧ Estoque_empresa.status_processamento = 'recusado por estoque cheio' (
+    (Objetos_descartados ⋈ Estoque_empresa.id_objeto = Objetos_descartados.id Estoque_empresa)
+    ⋈ Objetos_descartados.id = Agendamentos.id_objeto
+    (Agendamentos ⋈ Agendamentos.id_empresa = Empresas.id Empresas)
+  )
+)
