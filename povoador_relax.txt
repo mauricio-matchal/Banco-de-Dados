@@ -1,0 +1,64 @@
+group: UIBK - R, S, T
+description: Tables from and for the lecture [Databases: Foundations, Data Models and System Concepts - University of Innsbruck](http://dbis-informatik.uibk.ac.at/249-0-VO-Datenbanksysteme.html) chapter 3 
+category@de:Universität Innsbruck
+category@en:University of Innsbruck
+
+Usuarios = {
+id, nome, email, senha, cpf_cnpj, tipo_usuario, telefone, endereco
+
+1, 'João', 'joao@email.com', 'senha123', '12345678900', 'comum', '71999990000', 'Rua A, Salvador'
+2, 'Ana', 'ana@email.com', 'senha456', '98765432100', 'administrador', '71988880000', 'Rua B, Salvador'
+3, 'Carlos', 'carlos@email.com', 'senha789', '11122233344', 'coletor', '71977770000', 'Rua C, Salvador'
+}
+
+Objetos_descartados = {
+id, id_usuario, categoria, descricao, estado_conservacao, componentes_perigosos, motivo_descarte, data_registro
+
+1, 1, 'Smartphone', 'Celular quebrado', 'ruim', 'bateria de lítio', 'não funciona mais', '2025-07-01 10:00:00'
+2, 1, 'Eletrodomésticos', 'AirFrier', 'regular', 'nenhum', 'não usava', '2025-07-02 14:00:00'
+3, 2, 'Eletrodomésticos', 'Geladeira', 'bom', 'nenhum', 'troquei', '2025-07-03 09:00:00'
+}
+
+Empresas = {
+id, razao_social, cnpj, email, telefone, endereco, certificacoes, capacidade_armazenamento, senha
+
+1, 'Recicla Tudo', '12345678000100', 'contato@recicla.com', '71333330000', 'Av. Principal, Salvador', 'ISO 9001', 1000, 'emp123'
+2, 'EcoDescarte', '98765432000199', 'suporte@eco.com', '71444440000', 'Rua Verde, Salvador', 'ISO 14001', 500, 'eco456'
+}
+
+Agendamentos = {
+id, id_objeto, id_usuario, id_empresa, data_agendamento, status, tipo_coleta, local_coleta
+
+1, 1, 1, 1, '2025-07-05 08:00:00', 'pendente', 'individual', 'Rua A, Salvador'
+2, 2, 1, 1, '2025-07-06 09:00:00', 'coletado', 'ponto_entrega', 'Ponto Fixo A'
+3, 3, 2, 2, '2025-07-07 10:00:00', 'confirmado', 'empresarial', 'Empresa X, Centro'
+}
+
+Certificados = {
+id, id_agendamento, data_emissao, arquivo_certificado, status
+
+1, 2, '2025-07-06 12:00:00', 'certificado_2.pdf', 'emitido'
+2, 3, '2025-07-07 12:00:00', 'certificado_3.pdf', 'emitido'
+}
+
+Estoque_empresa = {
+id, id_empresa, id_objeto, status_processamento, data_entrada
+
+1, 1, 1, ‘recusado por estoque cheio', '2025-07-05 15:00:00'
+2, 1, 2, 'reciclado', '2025-07-06 16:00:00'
+3, 2, 3, ‘recusado por estoque cheio', '2025-07-07 11:00:00'
+}
+
+Feedbacks = {
+id, id_usuario, id_objeto, nota, comentario, data_feedback
+
+1, 1, 1, 1, 'Muito ruim o serviço', '2025-07-06 13:00:00'
+2, 2, 3, 2, 'Não acharam onde eu moro', '2025-07-07 14:00:00'
+}
+
+Logs_sistema = {
+id, id_usuario, acao, data_acao
+
+1, 1, 'Login', '2025-07-01 08:00:00'
+2, 2, 'Cadastro de objeto', '2025-07-03 09:10:00'
+}
